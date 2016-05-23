@@ -1,0 +1,5 @@
+ QML=function(element_index,degree_order)
+ {
+   #TO DO    
+   #  should  return  linear interpolation   of   natural  maximum  likelihood  estimation  of 0,1,2 order  chain rule
+ }
