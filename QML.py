@@ -28,7 +28,7 @@ class  qml(object):
         return(q)
     def  interpolation(self,lambda_list,chain_order_list):
         """lambda  list  of lambdas like  lambda1 , ....,lambdak,  chain_order_list=[index,chain_order]"""
-        print("TO DO  BEYHAN")
+        #print("TO DO  BEYHAN")
         print("TO   FIGURE OUT  EMPIRICAL  RESULT ON  SOME     BIG  DATA SET")
         interpolation=[]
         for  chain in chain_order_list:
