@@ -1,3 +1,4 @@
+
 class  qml(object):
     def __init__(self,data):
         self.data=data
@@ -25,6 +26,20 @@ class  qml(object):
         q=card_nominator/card_denominator
         #q is the modeled probability   of    occuring   value   at inde conditioned  my   markov chain  order
         return(q)
-    def  interpolation(lambda_list,chain_order_list):
+    def  interpolation(self,lambda_list,chain_order_list):
+        """lambda  list  of lambdas like  lambda1 , ....,lambdak,  chain_order_list=[index,chain_order]"""
         print("TO DO  BEYHAN")
         print("TO   FIGURE OUT  EMPIRICAL  RESULT ON  SOME     BIG  DATA SET")
+        interpolation=[]
+        for  chain in chain_order_list:
+            #print(self.get_chunck(chain[0],chain[1]))
+            interpolation.append(self.MLH(chain[0],chain[1]))
+        if  len(lambda_list)!=chain_order_list[0][1]:
+            print(" crazy   dude")
+        else:
+            w_average=0
+            for  i in range(0,len(lambda_list)):
+                w_average=w_average+(lambda_list[i]*interpolation[i])
+                
+                
+        return [interpolation,w_average]
