@@ -43,3 +43,31 @@ class  qml(object):
                 
                 
         return [interpolation,w_average]
+
+def  create_data(df, columns,index):
+    #3 d columns
+    order3=df[columns[0]][index]
+    order2=df[columns[1]][index]
+    order1=df[columns[2]][index]
+    subset=df[(df[columns[0]]==order3)&(df[columns[1]]==order2)]
+    subset=pd.DataFrame(subset,columns=columns)
+    import itertools
+    subset=subset[:].values.tolist()
+    subset=list(itertools.chain(*subset))
+    #subset now  is list  with   history  of particular   trigram
+ 
+ 
+    return subset
+    # passes  dataframe ,   column names   for  markov   features, index   for for looping  each row
+    #returns  list  with  history of each  row in order  to  do  maximum likelihood  estimation
+    
+#example  for  getting stacked  feature :
+newfeature=[]
+for  i in range(train.shape[0]):
+    s=create_data(train,columns,i)
+    l=[1/3,1/3,1/3]
+    chain_order_list=[[2,3],[2,2],[2,1]]
+    q=qml(s)
+    interpolation_result=q.interpolation(l,chain_order_list)[1]
+    newfeature.append(interpolation_result)
+
